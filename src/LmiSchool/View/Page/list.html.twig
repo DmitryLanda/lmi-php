@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="page-header">
+        <h3>Список страниц</h3>
+    </div>
+    <ul class="nav nav-pills">
+        <li>
+            <a href="{{ router.generate('admin.page.add') }}">Добавить новую</a>
+        </li>
+    </ul>
+    <ul class="list-unstyled">
+        {% for page in pages %}
+            <li>
+                <a href="{{ router.generate('admin.page.edit', {'id': page.id}) }}" target="_blank">
+                    {{ page.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    {% set slugParts = page.slug|split('/') %}
+    {% set slug = slugParts[0] %}
+    {% set slugs = slugParts|slice(1) %}
+    <div class="page-header">
+        <h3>
+            {{ page.title }}
+            <small>
+                <a href="{{ router.generate('admin.page.edit', {'id': id}) }}" target="_blank">
+                    <span class="pull-right fa fa-pencil"></span>
+                </a>
+            </small>
+        </h3>
+    </div>
+    <p>{{ page.content|raw }}</p>
+{% endblock %}

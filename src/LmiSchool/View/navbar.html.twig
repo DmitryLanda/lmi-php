@@ -1,0 +1,19 @@
+<nav id="top-menu" class="navbar navbar-default hidden-xs hidden-sm" role="navigation">
+    <ul class="nav navbar-nav">
+        <li><a href="{{ router.generate('news.list') }}">Новости</a></li>
+        <li><a href="#">Гостевая книга</a></li>
+        <li><a href="#">Контакты</a></li>
+        <li><a href="#">Электронная приемная</a></li>
+        <li><a href="#">Дорожный паспорт</a></li>
+    </ul>
+    <form class="navbar-form navbar-right hidden-sm hidden-xs" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Поиск...">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+</nav>

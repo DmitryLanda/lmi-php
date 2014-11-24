@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<ul class="media-list">
+    {% for teacher in teachers %}
+        {% set link = router.generate('teachers.show', {'id': teacher.id}) %}
+        <li class="well media" data-href="{{ link }}">
+            <div class="media-left">
+                {% set photo = teacher.imageUrl
+                ? 'http://www.lmi-school.ru/image/teacher/' ~ teacher.imageUrl
+                : '/assets/images/no-image-available.png' %}
+                <a href="{{ link }}">
+                    <img class="img-thumbnail thumb" src="{{ photo }}">
+                </a>
+            </div>
+            <div class="media-body">
+                <h3 class="media-heading"><a href="{{ link }}">{{ teacher.name }}</a></h3>
+                <ul class="list-unstyled">
+                    <li>
+                        {% if teacher.category is not empty and teacher.category == 0 %}
+                            <span class="glyphicon glyphicon-star-empty" title="Категория"></span>
+                        {% elseif teacher.category is not empty %}
+                            {% for i in 1..teacher.category %}
+                                <span class="glyphicon glyphicon-star" title="Категория"></span>
+                            {% endfor %}
+                        {% else %}
+                            <span>Категория не указана</span>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-tasks" title="Предмет"></span>
+                        <span>{{  teacher.subjectName }}</span>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-briefcase" title="Стаж работы (общий/ЛМИ)"></span>
+                        <span>{{ teacher.experience|default('не указан') }}</span>
+                    </li>
+                    <li>
+                        <span class="glyphicon glyphicon-info-sign" title="Биография"></span>
+                        <span class="hidden-xs">{{ teacher.about|striptags|truncate(250)|default('не указана') }}</span>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+    {% if teachers %}
+        {% include "pagination.htm.twig" with {
+        currentPage: page,
+        lastPage: teachersPagesCount,
+        router: router,
+        routeName: 'teachers.list'
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $('li.media').css({"cursor": "pointer"});
+        $('li.media').on('click', function(e) {
+            var link = $(e.currentTarget).data('href') || location.href;
+            location.href = link;
+        });
+    </script>
+{% endblock %}

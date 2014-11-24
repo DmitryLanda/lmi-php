@@ -1,0 +1,69 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    {% if not teacher %}
+        <div class="alert alert-warning text-center">
+            К сожалению мы не смогли ничего найти
+        </div>
+    {% else %}
+        {% set photo = teacher.imageUrl
+            ? 'http://www.lmi-school.ru/image/teacher/' ~ teacher.imageUrl
+            : '/assets/images/no-image-available.png'
+        %}
+        {% set categoryMap = {
+                '0': 'Высшая',
+                '1': 'Первая',
+                '2': 'Вторая',
+                '3': 'Третья'
+            }
+        %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-center text-bold">{{ teacher.name }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <img class="img-thumbnail thumb" src="{{ photo }}">
+                    </div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <b>Предмет:</b>
+                            <span>{{ teacher.subjectName }}</span>
+                        </li>
+                        <li>
+                            <b>Дата рождения:</b>
+                            <span>{{ teacher.birthDate|default('не указана') }}</span>
+                        </li>
+                        <li>
+                            <b>Категория:</b>
+                            <span>{{ categoryMap[teacher.category] }}</span>
+                        </li>
+                        <li>
+                            <b>Стаж:</b>
+                            <span>{{ teacher.experience|default('не указан') }}</span>
+                        </li>
+                        {% if teacher.contact %}
+                            <li>
+                                <b>Контакты:</b>
+                                <span>{{ teacher.contact|raw }}</span>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <b>Электронная почта:</b>
+                            <span>{{ teacher.email|raw|default('не указана') }}</span>
+                        </li>
+                        <li>
+                            <b>Образование:</b>
+                            <span>{{ teacher.education|default('не указано') }}</span>
+                        </li>
+                        <li>
+                            <a href="#" class="" data-toggle="collapse" data-target="#about-{{ teacher.id }}">Подробнее...</a>
+                            <div id="about-{{ teacher.id }}" class="collapse">{{ teacher.about|default('не указано')|raw }}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

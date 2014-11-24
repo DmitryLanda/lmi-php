@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <ul class="media-list">
+        {% for news in newsList %}
+            {% set link = router.generate('news.show', {'id': news.id}) %}
+            <li class="well media" data-href="{{ link }}">
+                <div class="media-left">
+                    <a href="{{ link }}">
+                        <img class="img-thumbnail thumb"
+                             src="http://www.lmi-school.ru/image/news/{{ news.imageUrl }}"
+                             alt="Картинка не доступна или удалена"
+                        >
+                    </a>
+                    <div class="text-nowrap">
+                    <span>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span>{{ news.views }} просмотров</span>
+                    </span>
+                    </div>
+                    <div class="text-nowrap">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span>{{ news.author|default('Администратор') }}</span>
+                    </div>
+                    <div class="text-nowrap">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        <span>{{ news.dateShowAfter|date('d.m.Y') }}</span>
+                    </div>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">{{ news.title }}</h3>
+                    <p class="hidden-xs">{{ news.content|striptags|truncate(350) }}</p>
+                    <p class="visible-xs">{{ news.content|striptags|truncate(100) }}</p>
+                </div>
+            </li>
+        {% else %}
+            <li class="media">
+                <div class="alert alert-info">
+                    К сожалению новостей пока нет
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if newsList %}
+        {% include "pagination.htm.twig" with {
+            currentPage: page,
+            lastPage: newsPagesCount,
+            router: router,
+            routeName: 'news.list'
+        } %}
+    {% endif %}
+{% endblock %}
+
+
+{% block javascript %}
+    <script type="text/javascript">
+        $('li.media').css({"cursor": "pointer"});
+        $('li.media').on('click', function(e) {
+            var link = $(e.currentTarget).data('href') || location.href;
+            location.href = link;
+        });
+    </script>
+{% endblock %}

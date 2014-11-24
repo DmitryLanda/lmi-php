@@ -1,0 +1,28 @@
+{
+    "app_path": "/data/lmi",
+    "locale": "ru_RU.UTF-8",
+    "database": {
+        "driver": "pdo_mysql",
+        "host": "localhost",
+        "name": "wm19222_db",
+        "user": "root",
+        "password": "root",
+        "charset": "utf8"
+    },
+    "routes": "src/LmiSchool/Resources/routes.php",
+    "template": {
+        "base": "src/LmiSchool/View",
+        "cache": "cache/twig"
+    },
+    "pagination": {
+        "news": {
+            "per_page": 5
+        },
+        "teachers": {
+            "per_page": 5
+        },
+        "documents": {
+            "per_page": 15
+        }
+    }
+}

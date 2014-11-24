@@ -1,0 +1,136 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/codemirror.css">
+    <link rel="stylesheet" href="/assets/css/show-hint.css">
+{% endblock %}
+
+{% block content %}
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a id="code-tab" href="#code" aria-controls="home" role="tab" data-toggle="tab">Код</a>
+            </li>
+            <li role="presentation">
+                <a id="preview-tab" href="#preview" aria-controls="profile" role="tab" data-toggle="tab">Предварительный просмотр</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="code">
+                <form class="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span class="fa fa-header"></span>
+                            </div>
+                            <input type="text" id="page-title" class="form-control" value="{{ page.title }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="page-content" class="form-control">{{ page.content|raw }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span class="fa fa-globe"></span>
+                            </div>
+                            <input type="text" id="page-slug" class="form-control" value="{{ page.slug }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <span class="fa fa-tags"></span>
+                            </div>
+                            <input type="text" id="page-tags" class="form-control" value="{{ page.tags|join(',') }}">
+                        </div>
+                    </div>
+                    <button type="button" id="save-page" class="btn btn-default">Сохранить</button>
+                    <a id="open-page" href="#" class="btn btn-default" target="_blank">Открыть в новой вкладке</a>
+                </form>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="preview"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="/assets/js/codemirror.js"></script>
+    <script src="/assets/js/markdown.js"></script>
+    <script src="/assets/js/xml.js"></script>
+    <script src="/assets/js/show-hint.js"></script>
+    <script src="/assets/js/xml-hint.js"></script>
+    <script src="/assets/js/html-hint.js"></script>
+    <script src="/assets/js/matchtags.js"></script>
+    <script src="/assets/js/closetag.js"></script>
+    <script src="/assets/js/matchbrackets.js"></script>
+    <script src="/assets/js/closebrackets.js"></script>
+    <script src="/assets/js/marked.js"></script>
+
+    <script type="text/javascript">
+        var textarea = $('#page-content')[0];
+        CodeMirror.commands.autocomplete = function(cm) {
+            CodeMirror.showHint(cm, CodeMirror.hint.html);
+        };
+        var cm = CodeMirror.fromTextArea(textarea, {
+            lineNumbers: true,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            autoCloseTags: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+            autoFocus: true
+        });
+
+        function getPageHtml() {
+            var html = '';
+            html += $('#page-title').val();
+            html += "\n-------------------\n";
+            html += '<hr/>';
+            html += cm.getValue();
+
+            return marked(html);
+        }
+
+        function appendMessage(type, text) {
+            var messageContainer = $('<div/>')
+                .addClass('alert alert-dismissible fade in')
+                .addClass('alert-' + type);
+            var closeBtn = $('<button/>')
+                .attr('type', 'button')
+                .addClass('close')
+                .attr('data-dismiss', 'alert');
+            $('<span/>').attr('aria-hidden', 'true').text('x').appendTo(closeBtn);
+            $('<span/>').addClass('sr-only').text('Close').appendTo(closeBtn);
+            messageContainer.append(closeBtn);
+            $('<span/>')
+                .text(text)
+                .appendTo(messageContainer);
+            $('#messages').append(messageContainer).removeClass('hidden');
+        }
+
+        $('#preview-tab').on('show.bs.tab', function() {
+            $('#preview').html(getPageHtml());
+        });
+        $('#code-tab').on('show.bs.tab', function() {
+            cm.focus();
+        });
+
+        $('#save-page').on('click', function() {
+            $.post(location.href, {
+                'title': $('#page-title').val().trim(),
+                'content': marked(cm.getValue()),
+                'new_slug': $('#page-slug').val().trim(),
+                'tags': $('#page-tags').val().trim().split(',') || ['лми']
+            })
+            .success(function() {
+                appendMessage('success', 'Страница успешно изменена');
+                $('#open-page').attr('href', '/' + $('#page-slug').val().trim());
+            })
+            .error(function(xhr) {
+                appendMessage('danger', xhr.responseText || 'При сохранении страницы произошла ошибка');
+            });
+        });
+    </script>
+{% endblock %}

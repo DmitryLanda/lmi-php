@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <legend>Список документов</legend>
+    <table class="table table-striped table-hover">
+        <tbody>
+            {% for document in documents %}
+                <tr>
+                    <td>{{ document.name }}</td>
+                    <td>
+                        <a class="pull-left" href="{{ router.generate('documents.show', {'id': document.id}) }}">
+                            <i class="fa fa-search fa-2x"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pull-right" href="{{ router.generate('documents.download', {'id': document.id}) }}">
+                            <i class="fa fa-download fa-2x"></i>
+                        </a>
+                    </td>
+                    <td>
+                        {% if document.isKPMO() %}
+                            <span class="badge badge-info">КПМО</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if documents %}
+        {% include "pagination.htm.twig" with {
+            currentPage: page,
+            lastPage: documentsPagesCount,
+            router: router,
+            routeName: 'documents.list'
+        } %}
+    {% endif %}
+{% endblock %}

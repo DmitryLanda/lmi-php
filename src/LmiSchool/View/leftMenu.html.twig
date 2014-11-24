@@ -1,0 +1,312 @@
+<div id="sidebar" class="">
+    <ul id="accordion" class="nav panel-group">
+        {% if isAdmin %}
+            <li class="panel">
+                <span class="nav-header">
+                    <a href="{{ router.generate('admin.page.list') }}">
+                        <i class="fa fa-gears"></i>
+                        <span class="hidden-xs hidden-sm">Администрирование</span>
+                    </a>
+                </span>
+            </li>
+        {% endif %}
+        <li class="visible-xs visible-sm">
+            <span class="nav-header">
+                <a href="{{ router.generate('news.list') }}">
+                    <i class="fa fa-newspaper-o"></i>
+                </a>
+            </span>
+        </li>
+        <li class="panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-info-list"
+                  data-parent="#accordion">
+                <i class="fa fa-info-circle"></i>
+                <span class="hidden-xs hidden-sm">Информация</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-info-list" class="nav collapse">
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['about']}) }}">
+                        О лицее
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['history']}) }}">
+                        История лицея
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['achievements']}) }}">
+                        Достижения
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['safety']}) }}">
+                        Безопасность
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['partners']}) }}">
+                        Партнеры
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['support']}) }}">
+                        Материально-техническое обеспечение
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['founder']}) }}">
+                        Сведения об учредителе
+                    </a>
+                </li>
+            </ul>
+        <li class="panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-sign-in"></i>
+                    <span class="hidden-xs hidden-sm">Прием в лицей</span>
+                </a>
+            </span>
+        </li>
+        <li class="panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-administration-list"
+                  data-parent="#accordion">
+                <i class="fa fa-university"></i>
+                <span class="hidden-xs hidden-sm">Администрация</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-administration-list" class="nav collapse">
+                <li>
+                    <a href="{{ router.generate('teachers.show', {'id': 9}) }}">
+                        Директор
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('teachers.show', {'id': 49}) }}">
+                        Заместитель директора по АХЧ
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('teachers.show', {'id': 19}) }}">
+                        Заместитель директора по ВР
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('teachers.show', {'id': 16}) }}">
+                        Заместитель директора по УВР
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('teachers.show', {'id': 50}) }}">
+                        Заместитель директора по ФЭД
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-management-list"
+                  data-parent="#accordion">
+                <i class="fa fa-users"></i>
+                <span class="hidden-xs hidden-sm">Управляющий совет</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-management-list" class="nav collapse">
+                <li><a href="#">sub 1</a></li>
+                <li><a href="#">sub 2</a></li>
+                <li><a href="#">sub 3</a></li>
+            </ul>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-social-list"
+                  data-parent="#accordion">
+                <i class="fa fa-shield"></i>
+                <span class="hidden-xs hidden-sm">Социальная защита</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-social-list" class="nav collapse">
+                <li><a href="#">Омбудсмен</a></li>
+                <li><a href="#">Социальный педагог</a></li>
+                <li><a href="#">Педагог психолог</a></li>
+            </ul>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-chain"></i>
+                    <span class="hidden-xs hidden-sm">СРОБО "Формика"</span>
+                </a>
+            </span>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-chevron-right"></i>
+                    <span class="hidden-xs hidden-sm">Профком</span>
+                </a>
+            </span>
+        </li>
+        <li class="panel">
+            <span class="nav-header">
+                <a href="{{ router.generate('teachers.list') }}">
+                    <i class="fa fa-male"></i>
+                    <i class="fa fa-female"></i>
+                    <span class="hidden-xs hidden-sm">Учителя</span>
+                </a>
+            </span>
+        </li>
+        <li class="panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-study-list"
+                  data-parent="#accordion">
+                <i class="fa fa-graduation-cap"></i>
+                <span class="hidden-xs hidden-sm">Учеба</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-study-list" class="nav collapse">
+                <li><a href="#">sub 1</a></li>
+                <li><a href="#">sub 2</a></li>
+                <li><a href="#">sub 3</a></li>
+            </ul>
+        </li>
+        <li class="panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-picture-o"></i>
+                    <span class="hidden-xs hidden-sm">Виртуальный музей</span>
+                </a>
+            </span>
+        </li>
+        <li class="panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-marks-list"
+                  data-parent="#accordion">
+                <i class="fa fa-line-chart"></i>
+                <span class="hidden-xs hidden-sm">Итоговая аттестация</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-marks-list" class="nav collapse">
+                <li><a href="#">sub 1</a></li>
+                <li><a href="#">sub 2</a></li>
+                <li><a href="#">sub 3</a></li>
+            </ul>
+        </li>
+        <li class="panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-document-list"
+                  data-parent="#accordion">
+                <i class="fa fa-files-o"></i>
+                <span class="hidden-xs hidden-sm">Официальная документация</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-document-list" class="nav collapse">
+                <li><a href="#">sub 1</a></li>
+                <li><a href="#">sub 2</a></li>
+                <li><a href="#">sub 3</a></li>
+            </ul>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-money-list"
+                  data-parent="#accordion">
+                <i class="fa fa-ruble"></i>
+                <span class="hidden-xs hidden-sm">Фин.-хоз. деятельность</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-money-list" class="nav collapse">
+                <li><a href="#">sub 1</a></li>
+                <li><a href="#">sub 2</a></li>
+                <li><a href="#">sub 3</a></li>
+            </ul>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-refresh"></i>
+                    <span class="hidden-xs hidden-sm">Модернизация образования</span>
+                </a>
+            </span>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-standard-list"
+                  data-parent="#accordion">
+                <i class="fa fa-certificate"></i>
+                <span class="hidden-xs hidden-sm">Стандарты</span>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-standard-list" class="nav collapse">
+                <li><a href="#">ФГОС</a></li>
+                <li><a href="#">ГОС</a></li>
+            </ul>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-list-ul"></i>
+                    <span class="hidden-xs hidden-sm">Программы развития</span>
+                </a>
+            </span>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-th-list"></i>
+                    <span class="hidden-xs hidden-sm">Образовательные программы</span>
+                </a>
+            </span>
+        </li>
+        <li class="hidden-xs hidden-sm panel">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-warning"></i>
+                    <span class="hidden-xs hidden-sm">Предписания руководящих организаций</span>
+                </a>
+            </span>
+        </li>
+        <li class="panel visible-xs visible-sm">
+            <span class="nav-header">
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span class="hidden-xs hidden-sm">Контакты</span>
+                </a>
+            </span>
+        </li>
+        <li class="visible-xs visible-sm panel">
+            <span class="nav-header"
+                  data-toggle="collapse"
+                  data-target="#menu-rest-list"
+                  data-parent="#accordion">
+                <i class="fa fa-bars"></i>
+                <span class="pull-right caret"></span>
+            </span>
+            <ul id="menu-rest-list" class="nav collapse">
+                <li><a href="#">Гостевая книга</a></li>
+                <li><a href="#">Электронная приемная</a></li>
+                <li><a href="#">Дорожный паспорт</a></li>
+                <li><a href="#">СРОБО "Формика"</a></li>
+                <li><a href="#">Профком</a></li>
+                <li><a href="#">Социальная защита</a></li>
+                <li><a href="#">Фин.-хоз. деятельность</a></li>
+                <li><a href="#">Модернизация образования</a></li>
+                <li><a href="#">Стандарты</a></li>
+                <li><a href="#">Программы развития</a></li>
+                <li><a href="#">Образовательные программы</a></li>
+                <li><a href="#">Предписания руководящих организаций</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

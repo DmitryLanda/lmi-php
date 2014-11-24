@@ -1,0 +1,51 @@
+{
+    "name": "dmitry.landa/lmi-school",
+    "description": "Home page for school site",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "codemirror/codemirror",
+                "version": "@dev",
+                "source": {
+                    "url": "https://github.com/codemirror/codemirror",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "chjj/marked",
+                "version": "0.3.2",
+                "source": {
+                    "url": "https://github.com/chjj/marked",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+    "require": {
+        "doctrine/dbal": "~2.4",
+        "twitter/bootstrap": "~3.3",
+        "aura/router": "~2.1",
+        "twig/twig": "~1.16",
+        "twig/extensions": "~1.2",
+        "codemirror/codemirror": "@dev",
+        "fortawesome/font-awesome": "~4.2",
+        "chjj/marked": ">=0.3.2"
+    },
+    "authors": [
+        {
+            "name": "Dmitry Landa",
+            "email": "dmitry.landa@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

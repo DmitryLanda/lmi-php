@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    {#<meta name="keywords" content="{{ keywords|default('lmi.school.meta.keywords') }}">#}
+    {#<meta name="description" content="{{ description|default('lmi.school.meta.description') }}">#}
+    <title>{% block title %}{% endblock %}</title>
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap-theme.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/customization.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/sidebar.css"/>
+    {% block stylesheet %}{% endblock %}
+</head>
+<body>
+<div id="header">
+    <img class="img-responsive" src="{{ '/assets/images/header.jpg' }}">
+    {% include "navbar.html.twig" %}
+</div>
+
+<div id="middle" class="container-fluid">
+    <div id="left-menu" class="col-md-3 col-sm-1 col-xs-1">
+        {% include "leftMenu.html.twig" %}
+    </div>
+    <div id="content" class="col-md-9 col-sm-11 col-xs-11">
+        <div id="messages" class="hidden"></div>
+        {% block content %}{% endblock %}
+    </div>
+</div>
+<div class="clearfix"></div>
+
+{% include "footer.html.twig" %}
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+{% block javascript %}{% endblock %}
+
+<script>
+    $(document).ready(function () {
+        var nav = $('#top-menu'),
+                topMenuInitialOffset = nav.offset().top,
+                menu = $('#left-menu'),
+                menuToggler = $('#left-menu-toggler'),
+                togglerIcon = menuToggler.find('span').first();
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > topMenuInitialOffset) {
+                nav.css({"position": "fixed", "top": 0});
+            } else {
+                nav.css({"position": "static"});
+            }
+        });
+
+        menuToggler.on('click', function () {
+            menu.toggleClass('visible-sm visible-xs');
+            togglerIcon.toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+        });
+    });
+</script>
+</body>
+</html>
