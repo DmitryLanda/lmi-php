@@ -3,10 +3,10 @@
     "locale": "ru_RU.UTF-8",
     "database": {
         "driver": "pdo_mysql",
-        "host": "localhost",
-        "name": "wm19222_db",
-        "user": "root",
-        "password": "root",
+        "host": "us-cdbr-iron-east-01.cleardb.net",
+        "name": "heroku_1d4bf2a52f0aa96",
+        "user": "bd0b3b9e9bf09a",
+        "password": "c4015b07",
         "charset": "utf8"
     },
     "routes": "src/LmiSchool/Resources/routes.php",
