@@ -37,6 +37,9 @@
         "fortawesome/font-awesome": "~4.2",
         "chjj/marked": ">=0.3.2"
     },
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    },
     "authors": [
         {
             "name": "Dmitry Landa",
