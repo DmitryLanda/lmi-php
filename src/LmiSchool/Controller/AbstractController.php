@@ -2,8 +2,10 @@
 
 namespace LmiSchool\Controller;
 
+use Aura\Auth\Auth;
 use Aura\Router\Exception\RouteNotFound;
 use Aura\Router\Router;
+use LmiSchool\Core\AuthService;
 use LmiSchool\Core\Request;
 use Twig_Environment;
 
@@ -23,6 +25,11 @@ abstract class AbstractController
     protected $router;
 
     /**
+     * @var Auth|null
+     */
+    protected $authData;
+
+    /**
      * @var Twig_Environment
      */
     private $twig;
@@ -37,6 +44,7 @@ abstract class AbstractController
         $this->request = $request;
         $this->router = $router;
         $this->twig = $twig;
+        $this->authData = AuthService::getInstance()->resume();
     }
 
     /**
@@ -72,7 +80,8 @@ abstract class AbstractController
     protected function render($viewName, array $options = [])
     {
         $options = array_merge(array(
-            'router' => $this->router
+            'router' => $this->router,
+            'isAdmin' => ($this->authData && $this->authData->isValid())
         ), $options);
         $template = $this->twig->loadTemplate($viewName);
         echo $template->render($options);
@@ -89,5 +98,12 @@ abstract class AbstractController
         $page = $page ?: 1;
 
         return min($maximumAllowedPage, $page);
+    }
+
+    protected function checkCredentials()
+    {
+        if (!$this->authData || !$this->authData->isValid()) {
+            $this->redirectTo('error.not_authorized');
+        }
     }
 }

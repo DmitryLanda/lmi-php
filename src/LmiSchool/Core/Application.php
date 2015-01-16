@@ -2,6 +2,9 @@
 
 namespace LmiSchool\Core;
 
+use Aura\Auth\Adapter\HtpasswdAdapter;
+use Aura\Auth\AuthFactory;
+use Aura\Auth\Verifier\HtpasswdVerifier;
 use Aura\Router\RouteCollection;
 use Aura\Router\Router;
 use Aura\Router\RouterFactory;
@@ -19,6 +22,7 @@ class Application
     {
         $app = new self();
 
+        $app->initAuthorization();
         $app->initConfig();
         $app->initLocale();
         $app->initDatabaseConnection();
@@ -101,5 +105,10 @@ class Application
         $action = $request->getActionName();
 
         return $controller->$action();
+    }
+
+    private function initAuthorization()
+    {
+        AuthService::getInstance();
     }
 }

@@ -81,4 +81,14 @@ class Request
     {
         return $this->controllerName;
     }
+
+    public function getMethod()
+    {
+        return strtoupper($_SERVER['REQUEST_METHOD']);
+    }
+
+    public function isPost()
+    {
+        return $this->getMethod() == 'POST';
+    }
 }

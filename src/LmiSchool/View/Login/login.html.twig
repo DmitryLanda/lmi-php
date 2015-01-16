@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="text-center">
+        <div class="page-header">
+            <h1>Авторизация</h1>
+        </div>
+    </div>
+    <div>
+        <form class="form-horizontal small" action="{{ router.generate('admin.login') }}" method="POST">
+            <div class="form-group {% if error %} has-error {% endif %}">
+                <label for="username" class="col-sm-2 control-label">Имя пользователя</label>
+                <div class="col-sm-5">
+                    <input type="text" name="username" class="form-control" id="username" placeholder="имя пользователя">
+                </div>
+            </div>
+            <div class="form-group {% if error %} has-error {% endif %}">
+                <label for="password" class="col-sm-2 control-label">Пароль</label>
+                <div class="col-sm-5">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="пароль">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Войти</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

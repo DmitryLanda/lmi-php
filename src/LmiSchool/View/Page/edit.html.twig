@@ -120,7 +120,7 @@
         $('#save-page').on('click', function() {
             $.post(location.href, {
                 'title': $('#page-title').val().trim(),
-                'content': marked(cm.getValue()),
+                'content': cm.getValue(),
                 'new_slug': $('#page-slug').val().trim(),
                 'tags': $('#page-tags').val().trim().split(',') || ['лми']
             })

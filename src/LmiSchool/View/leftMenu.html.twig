@@ -118,9 +118,21 @@
                 <span class="pull-right caret"></span>
             </span>
             <ul id="menu-management-list" class="nav collapse">
-                <li><a href="#">sub 1</a></li>
-                <li><a href="#">sub 2</a></li>
-                <li><a href="#">sub 3</a></li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'upravlyaushiy-sovet'}) ~ '#work-plans' }}">
+                        План работы
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'upravlyaushiy-sovet'}) ~ '#members' }}">
+                        Состав и функции
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'upravlyaushiy-sovet'}) ~ '#reports' }}">
+                        Протоколы заседаний
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="hidden-xs hidden-sm panel">
@@ -133,9 +145,21 @@
                 <span class="pull-right caret"></span>
             </span>
             <ul id="menu-social-list" class="nav collapse">
-                <li><a href="#">Омбудсмен</a></li>
-                <li><a href="#">Социальный педагог</a></li>
-                <li><a href="#">Педагог психолог</a></li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'social-protection', 'slugs': ['ombudsmen']}) }}">
+                        Омбудсмен
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'social-protection', 'slugs': ['social-help']}) }}">
+                        Социальный педагог
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ router.generate('page.show', {'slug': 'social-protection', 'slugs': ['psychologist']}) }}">
+                        Педагог психолог
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="hidden-xs hidden-sm panel">

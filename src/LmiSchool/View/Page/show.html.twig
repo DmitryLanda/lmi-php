@@ -7,12 +7,23 @@
     <div class="page-header">
         <h3>
             {{ page.title }}
-            <small>
-                <a href="{{ router.generate('admin.page.edit', {'id': id}) }}" target="_blank">
-                    <span class="pull-right fa fa-pencil"></span>
-                </a>
-            </small>
+            {% if isAdmin %}
+                <small>
+                    <a href="{{ router.generate('admin.page.edit', {'id': id}) }}" target="_blank">
+                        <span class="pull-right fa fa-pencil"></span>
+                    </a>
+                </small>
+            {% endif %}
         </h3>
     </div>
-    <p>{{ page.content|raw }}</p>
+    <p id="md-content">{{ page.content|raw }}</p>
+{% endblock %}
+
+{% block javascript %}
+    <script src="/assets/js/marked.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#md-content').html(marked($('#md-content').text()));
+        });
+    </script>
 {% endblock %}

@@ -28,6 +28,8 @@ class PageController extends AbstractController
 
     public function editAction()
     {
+        $this->checkCredentials();
+
         $id = $this->request->get('id');
         $page = Page::findOneBy(['id' => $id]);
 
@@ -40,6 +42,8 @@ class PageController extends AbstractController
 
     public function updateAction()
     {
+        $this->checkCredentials();
+
         $id = $this->request->get('id');
         $page = Page::findOneBy(['id' => $id]);
 
@@ -62,6 +66,8 @@ class PageController extends AbstractController
 
     public function listAction()
     {
+        $this->checkCredentials();
+
         $pages = Page::findBy([], ['slug' => 'ASC']);
         $this->render('Page/list.html.twig', [
             'pages' => $pages
@@ -70,6 +76,8 @@ class PageController extends AbstractController
 
     public function addAction()
     {
+        $this->checkCredentials();
+
         $page = new Page();
 
         if ($this->request) {
