@@ -1,5 +1,5 @@
 {
-    "app_path": "/data/lmi",
+    "app_path": "/app",
     "locale": "ru_RU.UTF-8",
     "database": {
         "driver": "pdo_mysql",
