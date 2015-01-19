@@ -46,8 +46,8 @@ class DatabaseConnection
             'driver' => $config->get('database.driver'),
             'charset' => $config->get('database.charset'),
         );
-        $enviromentConnectionData = self::parseGlobalConfigVar();
-        $connectionData = array_replace($enviromentConnectionData, $configuredConnectionData);
+        $environmentConnectionData = self::parseGlobalConfigVar();
+        $connectionData = array_replace($configuredConnectionData, $environmentConnectionData);
 
         self::$connection =  DriverManager::getConnection($connectionData);
     }
@@ -62,10 +62,10 @@ class DatabaseConnection
 
         if ($connectionString) {
             $parsedData = parse_url($connectionString);
-            $connectionData['database.name'] = ltrim($parsedData['path'], "/");
-            $connectionData['database.user'] = $parsedData['user'];
-            $connectionData['database.password'] = $parsedData['pass'];
-            $connectionData['database.host'] = $parsedData['host'];
+            $connectionData['dbname'] = ltrim($parsedData['path'], "/");
+            $connectionData['user'] = $parsedData['user'];
+            $connectionData['password'] = $parsedData['pass'];
+            $connectionData['host'] = $parsedData['host'];
         }
 
         return $connectionData;
