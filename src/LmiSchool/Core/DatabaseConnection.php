@@ -38,15 +38,37 @@ class DatabaseConnection
     private static function connect()
     {
         $config = Config::getInstance();
-
-        self::$connection =  DriverManager::getConnection(array(
+        $configuredConnectionData = array(
             'dbname' => $config->get('database.name'),
             'user' => $config->get('database.user'),
             'password' => $config->get('database.password'),
             'host' => $config->get('database.host'),
             'driver' => $config->get('database.driver'),
             'charset' => $config->get('database.charset'),
-        ));
+        );
+        $enviromentConnectionData = self::parseGlobalConfigVar();
+        $connectionData = array_replace($enviromentConnectionData, $configuredConnectionData);
+
+        self::$connection =  DriverManager::getConnection($connectionData);
+    }
+
+    /**
+     * @return array
+     */
+    private static function parseGlobalConfigVar()
+    {
+        $connectionString = getenv('CLEARDB_DATABASE_URL');
+        $connectionData = [];
+
+        if ($connectionString) {
+            $parsedData = parse_url($connectionString);
+            $connectionData['database.name'] = ltrim($parsedData['path'], "/");
+            $connectionData['database.user'] = $parsedData['user'];
+            $connectionData['database.password'] = $parsedData['pass'];
+            $connectionData['database.host'] = $parsedData['host'];
+        }
+
+        return $connectionData;
     }
 
     private function __construct() {}
