@@ -51,7 +51,7 @@
                         {% endif %}
                         <li>
                             <b>Электронная почта:</b>
-                            <span>{{ teacher.email|raw|default('не указана') }}</span>
+                            <span>{{ teacher.email|default('не указана')|raw }}</span>
                         </li>
                         <li>
                             <b>Образование:</b>

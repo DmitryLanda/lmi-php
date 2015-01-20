@@ -1,13 +1,11 @@
 <?php
 /*
-* Copyright © FarHeap Solutions
-*
 * For a full copyright notice, see the COPYRIGHT file.
 */
 
 namespace LmiSchool\Controller;
 
-use LmiSchool\Core\AuthService;
+use LmiSchool\Core\Authentication\AuthService;
 
 /**
  * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>

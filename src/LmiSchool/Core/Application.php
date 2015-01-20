@@ -2,13 +2,11 @@
 
 namespace LmiSchool\Core;
 
-use Aura\Auth\Adapter\HtpasswdAdapter;
-use Aura\Auth\AuthFactory;
-use Aura\Auth\Verifier\HtpasswdVerifier;
 use Aura\Router\RouteCollection;
 use Aura\Router\Router;
 use Aura\Router\RouterFactory;
 use Doctrine\DBAL\Connection;
+use LmiSchool\Core\Authentication\AuthService;
 use Twig_Environment;
 use Twig_Extensions_Extension_Text;
 use Twig_Loader_Filesystem;

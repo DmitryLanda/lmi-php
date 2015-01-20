@@ -5,7 +5,7 @@ namespace LmiSchool\Controller;
 use Aura\Auth\Auth;
 use Aura\Router\Exception\RouteNotFound;
 use Aura\Router\Router;
-use LmiSchool\Core\AuthService;
+use LmiSchool\Core\Authentication\AuthService;
 use LmiSchool\Core\Request;
 use Twig_Environment;
 
@@ -81,7 +81,8 @@ abstract class AbstractController
     {
         $options = array_merge(array(
             'router' => $this->router,
-            'isAdmin' => ($this->authData && $this->authData->isValid())
+            'isAdmin' => ($this->authData && $this->authData->isValid()),
+            'user' => $this->authData->getUserData()
         ), $options);
         $template = $this->twig->loadTemplate($viewName);
         echo $template->render($options);

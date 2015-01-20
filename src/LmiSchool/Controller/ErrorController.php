@@ -1,7 +1,5 @@
 <?php
 /*
-* Copyright © FarHeap Solutions
-*
 * For a full copyright notice, see the COPYRIGHT file.
 */
 

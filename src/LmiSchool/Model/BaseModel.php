@@ -1,7 +1,5 @@
 <?php
 /*
-* Copyright © FarHeap Solutions
-*
 * For a full copyright notice, see the COPYRIGHT file.
 */
 
@@ -119,7 +117,7 @@ abstract class BaseModel
         $queryBuilder = new QueryBuilder(DatabaseConnection::getConnection());
         $queryBuilder->select(implode(',', $fieldNames))
             ->from($model->getTableName(), substr($model->getTableName(), 0, 1))
-            ->where('id = :id')
+            ->where('teacher_id = :id')
             ->setParameter('id', $id);
 
         unset($model);
