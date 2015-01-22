@@ -9,14 +9,17 @@
             <a href="{{ router.generate('admin.page.add') }}">Добавить новую</a>
         </li>
     </ul>
-    <ul class="list-unstyled">
-        {% for page in pages %}
-            <li>
+    {% for slug, pageGroup in pages %}
+        <legend>{{ slug }}</legend>
+        <ul class="list-unstyled">
+            {% for subSlug, page in pageGroup %}
+                <li>
+                    <span class="text-muted">{{ subSlug }}</span>
                     <a href="{{ router.generate('admin.page.edit', {'id': page.id}) }}" target="_blank">
                         {{ page.title }}
                     </a>
-                <span class="text-muted">({{ page.slug }})</span>
-            </li>
-        {% endfor %}
-    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 {% endblock %}

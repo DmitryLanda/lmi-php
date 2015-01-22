@@ -66,9 +66,18 @@ class PageController extends AbstractController
     {
         $this->checkCredentials();
 
+        $result = [];
         $pages = Page::findBy([], ['slug' => 'ASC']);
+        foreach ($pages as $page) {
+            $offset = strpos($page->getSlug(), '/');
+            $key = substr($page->getSlug(), 0, $offset);
+            $offset = $offset === false ? 0 : $offset + 1;
+            $result[$key][substr($page->getSlug(), $offset)] = $page;
+        }
+        ksort($result);
+
         $this->render('Page/list.html.twig', [
-            'pages' => $pages
+            'pages' => $result
         ]);
     }
 
