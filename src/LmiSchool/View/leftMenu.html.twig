@@ -18,13 +18,14 @@
             </span>
         </li>
         <li class="panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-info-list"
-                  data-parent="#accordion">
-                <i class="fa fa-info-circle"></i>
-                <span class="hidden-xs hidden-sm">Информация</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                       data-target="#menu-info-list"
+                       data-parent="#accordion">
+                    <i class="fa fa-info-circle"></i>
+                    <span class="hidden-xs hidden-sm">Информация</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-info-list" class="nav collapse">
                 <li>
@@ -63,22 +64,24 @@
                     </a>
                 </li>
             </ul>
+        </li>
         <li class="panel">
             <span class="nav-header">
-                <a href="#">
+                <a href="{{ router.generate('page.show', {'slug': 'information', 'slugs': ['entering']}) }}">
                     <i class="fa fa-sign-in"></i>
                     <span class="hidden-xs hidden-sm">Прием в лицей</span>
                 </a>
             </span>
         </li>
         <li class="panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-administration-list"
-                  data-parent="#accordion">
-                <i class="fa fa-university"></i>
-                <span class="hidden-xs hidden-sm">Администрация</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-administration-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-university"></i>
+                    <span class="hidden-xs hidden-sm">Администрация</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-administration-list" class="nav collapse">
                 <li>
@@ -109,40 +112,43 @@
             </ul>
         </li>
         <li class="panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-management-list"
-                  data-parent="#accordion">
-                <i class="fa fa-users"></i>
-                <span class="hidden-xs hidden-sm">Управляющий совет</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-management-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-users"></i>
+                    <span class="hidden-xs hidden-sm">Управляющий совет</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-management-list" class="nav collapse">
                 <li>
-                    <a href="{{ router.generate('page.show', {'slug': 'upravlyaushiy-sovet'}) ~ '#work-plans' }}">
+                    <a href="{{ router.generate('page.show', {'slug': 'management-group'}) ~ '#work-plans' }}">
                         План работы
                     </a>
                 </li>
                 <li>
-                    <a href="{{ router.generate('page.show', {'slug': 'upravlyaushiy-sovet'}) ~ '#members' }}">
+                    <a href="{{ router.generate('page.show', {'slug': 'management-group'}) ~ '#members' }}">
                         Состав и функции
                     </a>
                 </li>
                 <li>
-                    <a href="{{ router.generate('page.show', {'slug': 'upravlyaushiy-sovet'}) ~ '#reports' }}">
+                    <a href="{{ router.generate('page.show', {'slug': 'management-group'}) ~ '#reports' }}">
                         Протоколы заседаний
                     </a>
                 </li>
             </ul>
         </li>
         <li class="hidden-xs hidden-sm panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-social-list"
-                  data-parent="#accordion">
-                <i class="fa fa-shield"></i>
-                <span class="hidden-xs hidden-sm">Социальная защита</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a class="prevent-default"
+                       data-toggle="collapse"
+                       data-target="#menu-social-list"
+                       data-parent="#accordion">
+                    <i class="fa fa-shield"></i>
+                    <span class="hidden-xs hidden-sm">Социальная защита</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-social-list" class="nav collapse">
                 <li>
@@ -164,7 +170,7 @@
         </li>
         <li class="hidden-xs hidden-sm panel">
             <span class="nav-header">
-                <a href="#">
+                <a href="{{ router.generate('page.show', {'slug': 'srobo-formika'}) }}">
                     <i class="fa fa-chain"></i>
                     <span class="hidden-xs hidden-sm">СРОБО "Формика"</span>
                 </a>
@@ -188,13 +194,14 @@
             </span>
         </li>
         <li class="panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-study-list"
-                  data-parent="#accordion">
-                <i class="fa fa-graduation-cap"></i>
-                <span class="hidden-xs hidden-sm">Учеба</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-study-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-graduation-cap"></i>
+                    <span class="hidden-xs hidden-sm">Учеба</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-study-list" class="nav collapse">
                 <li><a href="#">sub 1</a></li>
@@ -211,13 +218,14 @@
             </span>
         </li>
         <li class="panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-marks-list"
-                  data-parent="#accordion">
-                <i class="fa fa-line-chart"></i>
-                <span class="hidden-xs hidden-sm">Итоговая аттестация</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-marks-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-line-chart"></i>
+                    <span class="hidden-xs hidden-sm">Итоговая аттестация</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-marks-list" class="nav collapse">
                 <li><a href="#">sub 1</a></li>
@@ -226,13 +234,14 @@
             </ul>
         </li>
         <li class="panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-document-list"
-                  data-parent="#accordion">
-                <i class="fa fa-files-o"></i>
-                <span class="hidden-xs hidden-sm">Официальная документация</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-document-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-files-o"></i>
+                    <span class="hidden-xs hidden-sm">Официальная документация</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-document-list" class="nav collapse">
                 <li><a href="#">sub 1</a></li>
@@ -241,13 +250,14 @@
             </ul>
         </li>
         <li class="hidden-xs hidden-sm panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-money-list"
-                  data-parent="#accordion">
-                <i class="fa fa-ruble"></i>
-                <span class="hidden-xs hidden-sm">Фин.-хоз. деятельность</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-money-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-ruble"></i>
+                    <span class="hidden-xs hidden-sm">Фин.-хоз. деятельность</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-money-list" class="nav collapse">
                 <li><a href="#">sub 1</a></li>
@@ -264,13 +274,14 @@
             </span>
         </li>
         <li class="hidden-xs hidden-sm panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-standard-list"
-                  data-parent="#accordion">
-                <i class="fa fa-certificate"></i>
-                <span class="hidden-xs hidden-sm">Стандарты</span>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-standard-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-certificate"></i>
+                    <span class="hidden-xs hidden-sm">Стандарты</span>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-standard-list" class="nav collapse">
                 <li><a href="#">ФГОС</a></li>
@@ -310,12 +321,13 @@
             </span>
         </li>
         <li class="visible-xs visible-sm panel">
-            <span class="nav-header"
-                  data-toggle="collapse"
-                  data-target="#menu-rest-list"
-                  data-parent="#accordion">
-                <i class="fa fa-bars"></i>
-                <span class="pull-right caret"></span>
+            <span class="nav-header">
+                <a data-toggle="collapse"
+                      data-target="#menu-rest-list"
+                      data-parent="#accordion">
+                    <i class="fa fa-bars"></i>
+                    <span class="pull-right caret"></span>
+                </a>
             </span>
             <ul id="menu-rest-list" class="nav collapse">
                 <li><a href="#">Гостевая книга</a></li>

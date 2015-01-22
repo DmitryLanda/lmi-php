@@ -24,7 +24,6 @@
 #sidebar span.nav-header {
     color: #333333;
     display: block;
-    padding: 10px 5px;
     font-weight: bold;
     font-size: 1em;
     text-transform: uppercase;
@@ -40,6 +39,7 @@
 }
 
 #sidebar span.nav-header a {
+    padding: 10px 5px;
     border-bottom: none;
     text-decoration: none;
     display: block;
