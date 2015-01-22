@@ -6,24 +6,29 @@
         <li><a href="#">Электронная приемная</a></li>
         <li><a href="#">Дорожный паспорт</a></li>
     </ul>
+    {#{% if isAdmin %}#}
+        {#<div>#}
+            {#<a href="{{ router.generate('teachers.show', {'id': user['id']}) }}">#}
+                {#{{ user['teacher_name'] }}#}
+            {#</a>#}
+        {#</div>#}
+    {#{% endif %}#}
     <form class="navbar-form navbar-right hidden-sm hidden-xs" role="search">
-        {% if not isAdmin %}
-            <div class="input-group">
-                <a class="btn btn-default" type="button">
-                    Войти <span class="fa fa-sign-in"></span>
-                </a>
-            </div>
-        {% else %}
-            <div>
-                <a href="{{ router.generate('teachers.show', {'id': user['id']}) }}">
-                    {{ user['teacher_name'] }}
-                </a>
-            </div>
-        {% endif %}
         <div class="input-group">
-            <input type="text" class="hidden form-control" placeholder="Поиск...">
-            <span>
-                <button class="btn btn-default" type="button">
+            <span class="input-group-btn">
+                {% if not isAdmin %}
+                    <a href="{{ router.generate('admin.login') }}" class="btn btn-default" type="button">
+                        Войти <span class="fa fa-sign-in"></span>
+                    </a>
+                {% else %}
+                    <a href="{{ router.generate('admin.logout') }}" class="btn btn-default" type="button">
+                        Выйти <span class="fa fa-sign-out"></span>
+                    </a>
+                {% endif %}
+            </span>
+            <input id="search-input" type="text" class="hidden form-control large" placeholder="Поиск...">
+            <span class="input-group-btn">
+                <button id="search-btn" class="btn btn-default" type="button">
                     Поиск <span class="fa fa-search"></span>
                 </button>
             </span>

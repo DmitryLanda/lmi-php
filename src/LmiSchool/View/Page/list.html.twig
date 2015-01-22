@@ -12,9 +12,10 @@
     <ul class="list-unstyled">
         {% for page in pages %}
             <li>
-                <a href="{{ router.generate('admin.page.edit', {'id': page.id}) }}" target="_blank">
-                    {{ page.title }}
-                </a>
+                    <a href="{{ router.generate('admin.page.edit', {'id': page.id}) }}" target="_blank">
+                        {{ page.title }}
+                    </a>
+                <span class="text-muted">({{ page.slug }})</span>
             </li>
         {% endfor %}
     </ul>
