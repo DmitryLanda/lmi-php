@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/codemirror.css">
+{% endblock %}
+
+{% block content %}
+    <ul class="nav nav-pills">
+        <li>
+            <a href="{{ router.generate('admin.menu.list') }}">
+                <span class="fa fa-backward"></span>
+                Назад к списку элементов
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <form class="form-horizontal small" action="{{ router.generate('admin.menu.edit', {'id': item.id}) }}" method="POST">
+        {% include 'Menu/form.html.twig' %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Сохранить</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+    <script src="/assets/js/codemirror.js"></script>
+    <script src="/assets/js/matchbrackets.js"></script>
+    <script src="/assets/js/closebrackets.js"></script>
+    <script src="/assets/js/foldcode.js"></script>
+    <script src="/assets/js/javascript.js"></script>
+    <script src="/assets/js/trailingspace.js"></script>
+
+    <script type="text/javascript">
+        var textarea = $('#route-options')[0];
+        var cm = CodeMirror.fromTextArea(textarea, {
+            lineNumbers: true,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            autoFocus: true,
+            mode: "application/json"
+        });
+   </script>
+
+{% endblock %}

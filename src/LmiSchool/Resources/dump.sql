@@ -10,3 +10,14 @@ CREATE TABLE IF NOT EXISTS `pages` (
 ALTER TABLE `documents` ADD COLUMN `id` int(11);
 UPDATE `documents` SET `id` = `doc_id`;
 ALTER TABLE `documents` CHANGE `id` `id` INT( 11 ) NOT NULL;
+
+
+CREATE TABLE IF NOT EXISTS `menu_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11),
+  `position` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL UNIQUE,
+  `route_name` varchar(255),
+  `route_options` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  AUTO_INCREMENT=1;

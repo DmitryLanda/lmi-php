@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <ul class="nav nav-pills">
+        <li>
+            <a href="{{ router.generate('admin.menu.add') }}">
+                <span class="fa fa-plus-square-o"></span>
+                Добавить новый элемент
+            </a>
+        </li>
+    </ul>
+    <ul>
+        {% for parent in menu['parents'] %}
+            <li>
+                {% set hasChildren = menu['children'][parent.id] is defined %}
+                <a href="{{ router.generate('admin.menu.edit', {'id': parent.id}) }}">
+                    <span>{{ parent.title }}</span>
+                </a>
+                {% if parent.routeName %}
+                    <span class="text-muted">{{ router.generate(parent.routeName, parent.routeOptions) }}</span>
+                {% endif %}
+                {% if hasChildren %}
+                    <ul>
+                        {% for item in menu['children'][parent.id] %}
+                            <li>
+                                <a href="{{ router.generate('admin.menu.edit', {'id': item.id}) }}">
+                                    {{ item.title }}
+                                </a>
+                                {% if item.routeName %}
+                                    <span class="text-muted">{{ router.generate(item.routeName, item.routeOptions) }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

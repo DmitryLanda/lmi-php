@@ -7,6 +7,7 @@ use Aura\Router\Exception\RouteNotFound;
 use Aura\Router\Router;
 use LmiSchool\Core\Authentication\AuthService;
 use LmiSchool\Core\Request;
+use LmiSchool\Model\Menu;
 use Twig_Environment;
 
 /**
@@ -79,10 +80,20 @@ abstract class AbstractController
      */
     protected function render($viewName, array $options = [])
     {
+        $menu = [];
+        foreach (Menu::findBy([], ['parent_id' => 'DESC', 'position' => 'ASC']) as $menuItem) {
+            if ($menuItem->getParentId()) {
+                $menu['children'][$menuItem->getParentId()][] = $menuItem;
+            } else {
+                $menu['parents'][$menuItem->getId()] = $menuItem;
+            }
+        }
+
         $options = array_merge(array(
             'router' => $this->router,
             'isAdmin' => ($this->authData && $this->authData->isValid()),
-            'user' => $this->authData->getUserData()
+            'user' => $this->authData->getUserData(),
+            'menu' => $menu
         ), $options);
         $template = $this->twig->loadTemplate($viewName);
         echo $template->render($options);

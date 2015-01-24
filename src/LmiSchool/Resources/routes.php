@@ -36,3 +36,4 @@ include __DIR__ . '/routes/news.php';
 include __DIR__ . '/routes/teachers.php';
 include __DIR__ . '/routes/pages.php';
 include __DIR__ . '/routes/documents.php';
+include __DIR__ . '/routes/menu.php';

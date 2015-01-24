@@ -5,6 +5,7 @@
 
 namespace LmiSchool\Controller;
 use LmiSchool\Model\Exception\ModelException;
+use LmiSchool\Model\Menu;
 use LmiSchool\Model\Page;
 
 /**
