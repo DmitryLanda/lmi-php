@@ -22,7 +22,7 @@ class MenuController extends AbstractController
         $menuItem = Menu::findOneBy(['id' => $id]);
 
         if (!$menuItem) {
-            $this->redirectTo('error.not_found');
+            $this->renderNotFound();
         }
 
         if ($this->request->isPost()) {

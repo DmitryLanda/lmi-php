@@ -6,7 +6,7 @@
     </div>
     <ul class="nav nav-pills">
         <li>
-            <a href="{{ router.generate('admin.page.add') }}">Добавить новую</a>
+            <a href="{{ generateUrl('admin.page.add') }}">Добавить новую</a>
         </li>
     </ul>
     {% for slug, pageGroup in pages %}
@@ -15,7 +15,7 @@
             {% for subSlug, page in pageGroup %}
                 <li>
                     <span class="text-muted">{{ subSlug }}</span>
-                    <a href="{{ router.generate('admin.page.edit', {'id': page.id}) }}" target="_blank">
+                    <a href="{{ generateUrl('admin.page.edit', {'id': page.id}) }}" target="_blank">
                         {{ page.title }}
                     </a>
                 </li>

@@ -56,6 +56,11 @@ abstract class AbstractController
     protected function generateUrl($routeName, array $options = [])
     {
         try {
+            if (array_key_exists('options', $options) && is_array($options['options'])) {
+                $options['options'] = http_build_query($options['options']);
+
+                return $this->router->generateRaw($routeName, $options);
+            }
             return $this->router->generate($routeName, $options);
         } catch (RouteNotFound $e) {
             return $this->router->generate('error.not_found');
@@ -90,7 +95,6 @@ abstract class AbstractController
         }
 
         $options = array_merge(array(
-            'router' => $this->router,
             'isAdmin' => ($this->authData && $this->authData->isValid()),
             'user' => $this->authData->getUserData(),
             'menu' => $menu
@@ -115,7 +119,17 @@ abstract class AbstractController
     protected function checkCredentials()
     {
         if (!$this->authData || !$this->authData->isValid()) {
-            $this->redirectTo('error.not_authorized');
+            $this->renderNotAuthorized();
         }
+    }
+
+    protected function renderNotFound()
+    {
+        $this->render('Error/404.html.twig');
+    }
+
+    protected function renderNotAuthorized()
+    {
+        $this->render('Error/403.html.twig');
     }
 }

@@ -46,7 +46,15 @@ abstract class BaseModel
         $queryBuilder->select(implode(',', $fieldNames))
             ->from($model->getTableName(), substr($model->getTableName(), 0, 1));
         foreach ($criteria as $key => $value) {
-            $queryBuilder->andWhere(sprintf('%s = %s', $key, $queryBuilder->createNamedParameter($value)));
+            if (is_array($value)) {
+                $queryBuilder->andWhere(sprintf(
+                    '%s IN (%s)',
+                    $key,
+                    implode(',', $value)
+                ));
+            } else {
+                $queryBuilder->andWhere(sprintf('%s = %s', $key, $queryBuilder->createNamedParameter($value)));
+            }
         }
         foreach ($orderBy as $key => $value) {
             $queryBuilder->addOrderBy($key, $value);

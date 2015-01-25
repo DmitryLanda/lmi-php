@@ -13,12 +13,12 @@
                 </span>
                 <ul id="menu-item-admin" class="nav collapse">
                     <li>
-                        <a href="{{ router.generate('admin.page.list') }}">
+                        <a href="{{ generateUrl('admin.page.list') }}">
                             Страницы
                         </a>
                     </li>
                     <li>
-                        <a href="{{ router.generate('admin.menu.list') }}">
+                        <a href="{{ generateUrl('admin.menu.list') }}">
                             Меню
                         </a>
                     </li>
@@ -38,7 +38,7 @@
                         <span class="pull-right caret"></span>
                     </a>
                 {% else %}
-                    <a href="{{ parent.routeName ? router.generate(parent.routeName, parent.routeOptions) : '#' }}">
+                    <a href="{{ parent.routeName ? generateUrl(parent.routeName, parent.routeOptions) : '#' }}">
                         <span>{{ parent.title }}</span>
                     </a>
                 {% endif %}
@@ -47,7 +47,7 @@
                 <ul id="menu-item-{{ parent.id }}" class="nav collapse">
                     {% for item in menu['children'][parent.id] %}
                         <li>
-                            <a href="{{ router.generate(item.routeName, item.routeOptions) }}">
+                            <a href="{{ generateUrl(item.routeName, item.routeOptions) }}">
                                 {{ item.title }}
                             </a>
                         </li>

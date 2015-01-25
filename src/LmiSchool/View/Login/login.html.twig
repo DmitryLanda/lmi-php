@@ -7,7 +7,7 @@
         </div>
     </div>
     <div>
-        <form class="form-horizontal small" action="{{ router.generate('admin.login') }}" method="POST">
+        <form class="form-horizontal small" action="{{ generateUrl('admin.login') }}" method="POST">
             <div class="form-group {% if error %} has-error {% endif %}">
                 <label for="username" class="col-sm-2 control-label">Имя пользователя</label>
                 <div class="col-sm-5">

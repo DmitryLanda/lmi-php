@@ -2,6 +2,7 @@
 
 namespace LmiSchool\Core;
 
+use Aura\Router\Exception\RouteNotFound;
 use Aura\Router\RouteCollection;
 use Aura\Router\Router;
 use Aura\Router\RouterFactory;
@@ -10,6 +11,7 @@ use LmiSchool\Core\Authentication\AuthService;
 use Twig_Environment;
 use Twig_Extensions_Extension_Text;
 use Twig_Loader_Filesystem;
+use Twig_SimpleFunction;
 
 /**
  * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
@@ -26,6 +28,7 @@ class Application
         $app->initDatabaseConnection();
         $router = $app->initRouter();
         $twig = $app->initTemplateEngine();
+        $app->initTwigFunctions($twig, $router);
         $app->handleRequest($router, $twig);
     }
 
@@ -92,15 +95,16 @@ class Application
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $route = $router->match($path, $_SERVER);
         if (!$route) {
-            header('Location: ' . $router->generate('error.not_found'));
-            exit;
+            $request = new Request($_GET, $_POST);
+            $controller = 'LmiSchool\\Controller\\ErrorController';
+            $controller = new $controller($request, $router, $twig);
+            $action = 'notFoundAction';
+        } else {
+            $request = new Request($_GET, $_POST, $route);
+            $controller = 'LmiSchool\\Controller\\' . $request->getControllerName();
+            $controller = new $controller($request, $router, $twig);
+            $action = $request->getActionName();
         }
-
-
-        $request = new Request($_GET, $_POST, $route);
-        $controller = 'LmiSchool\\Controller\\' . $request->getControllerName();
-        $controller = new $controller($request, $router, $twig);
-        $action = $request->getActionName();
 
         return $controller->$action();
     }
@@ -108,5 +112,29 @@ class Application
     private function initAuthorization()
     {
         AuthService::getInstance();
+    }
+
+    /**
+     * @param Twig_Environment $twig
+     * @param Router $router
+     */
+    private function initTwigFunctions(Twig_Environment $twig, Router $router)
+    {
+        $generateUrlFunction = new Twig_SimpleFunction(
+            'generateUrl',
+            function ($routeName, array $params = array()) use ($router) {
+                try {
+                    if (array_key_exists('options', $params) && is_array($params['options'])) {
+                        $params['options'] = http_build_query($params['options']);
+
+                        return $router->generateRaw($routeName, $params);
+                    }
+                    return $router->generate($routeName, $params);
+                } catch (RouteNotFound $e) {
+                    return $router->generate('error.not_found');
+                }
+            }
+        );
+        $twig->addFunction($generateUrlFunction);
     }
 }

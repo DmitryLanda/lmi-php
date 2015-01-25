@@ -7,14 +7,14 @@
 {% block content %}
     <ul class="nav nav-pills">
         <li>
-            <a href="{{ router.generate('admin.menu.list') }}">
+            <a href="{{ generateUrl('admin.menu.list') }}">
                 <span class="fa fa-backward"></span>
                 Назад к списку элементов
             </a>
         </li>
     </ul>
     <hr>
-    <form class="form-horizontal small" action="{{ router.generate('admin.menu.add') }}" method="POST">
+    <form class="form-horizontal small" action="{{ generateUrl('admin.menu.add') }}" method="POST">
         {% include 'Menu/form.html.twig' %}
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

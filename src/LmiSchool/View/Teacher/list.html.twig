@@ -3,7 +3,7 @@
 {% block content %}
 <ul class="media-list">
     {% for teacher in teachers %}
-        {% set link = router.generate('teachers.show', {'id': teacher.id}) %}
+        {% set link = generateUrl('teachers.show', {'id': teacher.id}) %}
         <li class="well media" data-href="{{ link }}">
             <div class="media-left">
                 {% set photo = teacher.imageUrl

@@ -19,7 +19,7 @@ class PageController extends AbstractController
         $page = Page::findOneBy(['slug' => $path]);
 
         if (!$page) {
-            $this->redirectTo('error.not_found');
+            $this->renderNotFound();
         }
 
         $this->render('Page/show.html.twig', ['page' => $page]);
@@ -33,7 +33,7 @@ class PageController extends AbstractController
         $page = Page::findOneBy(['id' => $id]);
 
         if (!$page) {
-            $this->redirectTo('error.not_found');
+            $this->renderNotFound();
         }
 
         $this->render('Page/edit.html.twig', ['page' => $page]);
@@ -113,7 +113,7 @@ class PageController extends AbstractController
         $path = implode('/', array_merge([$slug], $slugs));
 
         if (!$path) {
-            $this->redirectTo('error.not_found');
+            $this->renderNotFound();
         }
 
         return $path;

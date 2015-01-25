@@ -8,12 +8,12 @@
                 <tr>
                     <td>{{ document.name }}</td>
                     <td>
-                        <a class="pull-left" href="{{ router.generate('documents.show', {'id': document.id}) }}">
+                        <a class="pull-left" href="{{ generateUrl('documents.show', {'id': document.id}) }}">
                             <i class="fa fa-search fa-2x"></i>
                         </a>
                     </td>
                     <td>
-                        <a class="pull-right" href="{{ router.generate('documents.download', {'id': document.id}) }}">
+                        <a class="pull-right" href="{{ generateUrl('documents.download', {'id': document.id}) }}">
                             <i class="fa fa-download fa-2x"></i>
                         </a>
                     </td>

@@ -18,7 +18,19 @@ class TeacherController extends AbstractController
         $pageCount = ceil(Teacher::count() / $perPage);
         $page = $this->getPage($pageCount);
         $offset = ($page - 1) * $perPage;
-        $teachers = Teacher::findBy([], ['teacher_name' => 'ASC'], $perPage, $offset);
+
+        $sortName = $this->request->get('sort_name', 'teacher_name');
+        $sortOrder = $this->request->get('sort_order', 'ASC');
+
+        $searchKey = $this->request->get('search_key');
+        $searchValue = $this->request->get('search_value');
+
+        $search = [];
+        if ($searchKey && $searchValue) {
+            $search = [$searchKey => $searchValue];
+        }
+
+        $teachers = Teacher::findBy($search, [$sortName => $sortOrder], $perPage, $offset);
         $this->render('Teacher/list.html.twig', [
             'teachers' => $teachers,
             'teachersPagesCount' => $pageCount,

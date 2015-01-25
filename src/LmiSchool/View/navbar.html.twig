@@ -1,6 +1,6 @@
 <nav id="top-menu" class="navbar navbar-default hidden-xs hidden-sm" role="navigation">
     <ul class="nav navbar-nav">
-        <li><a href="{{ router.generate('news.list') }}">Новости</a></li>
+        <li><a href="{{ generateUrl('news.list', {'options': {'page': 1}}) }}">Новости</a></li>
         <li><a href="#">Гостевая книга</a></li>
         <li><a href="#">Контакты</a></li>
         <li><a href="#">Электронная приемная</a></li>
@@ -10,11 +10,11 @@
         <div class="input-group">
             <span class="input-group-btn">
                 {% if not isAdmin %}
-                    <a href="{{ router.generate('admin.login') }}" class="btn btn-default" type="button">
+                    <a href="{{ generateUrl('admin.login') }}" class="btn btn-default" type="button">
                         Войти <span class="fa fa-sign-in"></span>
                     </a>
                 {% else %}
-                    <a href="{{ router.generate('admin.logout') }}" class="btn btn-default" type="button">
+                    <a href="{{ generateUrl('admin.logout') }}" class="btn btn-default" type="button">
                         Выйти <span class="fa fa-sign-out"></span>
                     </a>
                 {% endif %}
