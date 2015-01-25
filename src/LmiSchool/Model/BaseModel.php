@@ -53,7 +53,9 @@ abstract class BaseModel
                     implode(',', $value)
                 ));
             } else {
-                $queryBuilder->andWhere(sprintf('%s = %s', $key, $queryBuilder->createNamedParameter($value)));
+                $parameter = ':' . str_replace(['.', ' '], '_', $key);
+                $queryBuilder->andWhere(sprintf('LOWER(%s) LIKE %s', $key, $parameter));
+                $queryBuilder->setParameter($parameter, strtolower('%' . $value . '%'));
             }
         }
         foreach ($orderBy as $key => $value) {

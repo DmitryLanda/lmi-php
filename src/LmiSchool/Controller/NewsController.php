@@ -17,7 +17,19 @@ class NewsController extends AbstractController
         $perPage = Config::getInstance()->get('pagination.news.per_page');
         $page = $this->getPage();
         $offset = ($page - 1) * $perPage;
-        $news = News::findBy([], ['date_up' => 'DESC', 'id' => 'DESC'], $perPage, $offset);
+
+        $sortName = $this->request->get('sort_name', 'date_up');
+        $sortOrder = $this->request->get('sort_order', 'DESC');
+
+        $searchKey = $this->request->get('search_key');
+        $searchValue = $this->request->get('search_value');
+
+        $search = [];
+        if ($searchKey && $searchValue) {
+            $search = [$searchKey => $searchValue];
+        }
+
+        $news = News::findBy($search, [$sortName => $sortOrder], $perPage, $offset);
         $this->render('News/list.html.twig', [
             'newsList' => $news,
             'videoList' => [],
