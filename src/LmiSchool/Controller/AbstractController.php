@@ -105,15 +105,11 @@ abstract class AbstractController
     }
 
     /**
-     * @param integer $maximumAllowedPage
      * @return integer
      */
-    protected function getPage($maximumAllowedPage)
+    protected function getPage()
     {
-        $page = $this->request->get('page', 1);
-        $page = $page ?: 1;
-
-        return min($maximumAllowedPage, $page);
+        return $this->request->get('page', 1);
     }
 
     protected function checkCredentials()

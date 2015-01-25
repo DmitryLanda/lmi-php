@@ -47,7 +47,7 @@
     {% if teachers %}
         {% include "pagination.htm.twig" with {
         currentPage: page,
-        lastPage: teachersPagesCount,
+        lastPage: teachers|length < perPage,
         router: router,
         routeName: 'teachers.list'
         } %}

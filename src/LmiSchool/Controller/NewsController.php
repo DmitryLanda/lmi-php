@@ -15,15 +15,13 @@ class NewsController extends AbstractController
     public function listAction()
     {
         $perPage = Config::getInstance()->get('pagination.news.per_page');
-        $pageCount = ceil(News::count() / $perPage);
-        $page = $this->getPage($pageCount);
+        $page = $this->getPage();
         $offset = ($page - 1) * $perPage;
         $news = News::findBy([], ['date_up' => 'DESC', 'id' => 'DESC'], $perPage, $offset);
         $this->render('News/list.html.twig', [
             'newsList' => $news,
             'videoList' => [],
-            'newsPagesCount' => $pageCount,
-            'videoPagesCount' => 0,
+            'perPage' => $perPage,
             'page' => $page
         ]);
     }

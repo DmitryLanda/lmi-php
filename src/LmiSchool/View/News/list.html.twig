@@ -44,7 +44,7 @@
     {% if newsList %}
         {% include "pagination.htm.twig" with {
             currentPage: page,
-            lastPage: newsPagesCount,
+            lastPage: newsList|length < perPage,
             router: router,
             routeName: 'news.list'
         } %}

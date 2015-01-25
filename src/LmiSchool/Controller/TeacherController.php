@@ -15,8 +15,7 @@ class TeacherController extends AbstractController
     public function listAction()
     {
         $perPage = Config::getInstance()->get('pagination.teachers.per_page');
-        $pageCount = ceil(Teacher::count() / $perPage);
-        $page = $this->getPage($pageCount);
+        $page = $this->getPage();
         $offset = ($page - 1) * $perPage;
 
         $sortName = $this->request->get('sort_name', 'teacher_name');
@@ -31,10 +30,11 @@ class TeacherController extends AbstractController
         }
 
         $teachers = Teacher::findBy($search, [$sortName => $sortOrder], $perPage, $offset);
+
         $this->render('Teacher/list.html.twig', [
             'teachers' => $teachers,
-            'teachersPagesCount' => $pageCount,
-            'page' => $page
+            'page' => $page,
+            'perPage' => $perPage
         ]);
     }
 
