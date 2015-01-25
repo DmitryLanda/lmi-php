@@ -9,8 +9,8 @@
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap-theme.min.css"/>
-    <link type="text/css" rel="stylesheet" href="/assets/css/customization.css"/>
     <link type="text/css" rel="stylesheet" href="/assets/css/sidebar.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/customization.css"/>
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
@@ -40,15 +40,15 @@
 
 <script>
     $(document).ready(function () {
-        var nav = $('#top-menu'),
-                topMenuInitialOffset = nav.offset().top;
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > topMenuInitialOffset) {
-                nav.css({"position": "fixed", "top": 0});
-            } else {
-                nav.css({"position": "static"});
-            }
-        });
+//        var nav = $('#top-menu'),
+//                topMenuInitialOffset = nav.offset().top;
+//        $(window).scroll(function () {
+//            if ($(window).scrollTop() > topMenuInitialOffset) {
+//                nav.css({"position": "fixed", "top": 0});
+//            } else {
+//                nav.css({"position": "static"});
+//            }
+//        });
 
         var searchVisible = false;
         $('#search-btn')
