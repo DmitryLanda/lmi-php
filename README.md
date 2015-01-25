@@ -1,3 +1,6 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DmitryLanda/lmi-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DmitryLanda/lmi-php/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/DmitryLanda/lmi-php/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/DmitryLanda/lmi-php/?branch=master)
+
 Сайт Лицея Математики и информатики
 ===================================
 
