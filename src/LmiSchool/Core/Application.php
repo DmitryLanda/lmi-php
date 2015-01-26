@@ -14,7 +14,7 @@ use Twig_Loader_Filesystem;
 use Twig_SimpleFunction;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class Application
 {

@@ -11,7 +11,7 @@ use Exception;
 use LmiSchool\Core\DatabaseConnection;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class AuthService
 {

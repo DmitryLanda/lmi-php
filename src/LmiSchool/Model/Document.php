@@ -3,10 +3,14 @@
 namespace LmiSchool\Model;
 /**
  *
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class Document extends BaseModel
 {
+    const KPMO_TYPE = 1;
+    const EDUCATION_TYPE = 2;
+    const OTHER_TYPE = 0;
+
     /**
      * @var integer
      */
@@ -23,14 +27,14 @@ class Document extends BaseModel
     private $urlToDownload;
 
     /**
-     * @var string
-     */
-    private $urlToView;
-
-    /**
      * @var boolean
      */
     private $isKPMO;
+
+    /**
+     * @var string
+     */
+    private $type;
 
     /**
      * @return integer
@@ -100,18 +104,18 @@ class Document extends BaseModel
     /**
      * @return string
      */
-    public function getUrlToView()
+    public function getType()
     {
-        return $this->urlToView;
+        return $this->type;
     }
 
     /**
-     * @param string $urlToView
+     * @param string $type
      * @return Document
      */
-    public function setUrlToView($urlToView)
+    public function setType($type)
     {
-        $this->urlToView = $urlToView;
+        $this->type = $type;
 
         return $this;
     }
@@ -122,11 +126,11 @@ class Document extends BaseModel
     protected function dump()
     {
         return [
-            'doc_id' => $this->getId(),
+            'id' => $this->getId(),
             'doc_name' => $this->getName(),
             'doc_url' => $this->getUrlToDownload(),
-            'doc_url_show' => $this->getUrlToView(),
-            'doc_kpmo' => $this->isKPMO()
+            'doc_kpmo' => $this->isKPMO(),
+            'doc_type' => $this->getType()
         ];
     }
 
@@ -139,11 +143,11 @@ class Document extends BaseModel
         if (!$data) {
             return $this;
         }
-        $this->id = $data['doc_id'];
+        $this->id = $data['id'];
         $this->setName($data['doc_name'])
             ->setUrlToDownload($data['doc_url'])
-            ->setUrlToView($data['doc_url_show'])
-            ->setIsKPMO($data['doc_kpmo']);
+            ->setIsKPMO($data['doc_kpmo'])
+            ->setType($data['doc_type']);
 
         return $this;
     }
@@ -155,5 +159,4 @@ class Document extends BaseModel
     {
         return 'documents';
     }
-
 }

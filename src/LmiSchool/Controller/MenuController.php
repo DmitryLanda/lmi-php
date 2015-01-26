@@ -9,7 +9,7 @@ use LmiSchool\Model\Exception\ModelException;
 use LmiSchool\Model\Menu;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class MenuController extends AbstractController
 {

@@ -9,7 +9,7 @@ use Aura\Auth\Verifier\VerifierInterface;
 use Doctrine\DBAL\Connection;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class DBALAdapter extends PdoAdapter
 {

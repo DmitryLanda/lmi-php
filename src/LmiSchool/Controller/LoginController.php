@@ -8,7 +8,7 @@ namespace LmiSchool\Controller;
 use LmiSchool\Core\Authentication\AuthService;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class LoginController extends AbstractController
 {

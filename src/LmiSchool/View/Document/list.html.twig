@@ -8,18 +8,13 @@
                 <tr>
                     <td>{{ document.name }}</td>
                     <td>
-                        <a class="pull-left" href="{{ generateUrl('documents.show', {'id': document.id}) }}">
-                            <i class="fa fa-search fa-2x"></i>
-                        </a>
-                    </td>
-                    <td>
                         <a class="pull-right" href="{{ generateUrl('documents.download', {'id': document.id}) }}">
                             <i class="fa fa-download fa-2x"></i>
                         </a>
                     </td>
                     <td>
                         {% if document.isKPMO() %}
-                            <span class="badge badge-info">КПМО</span>
+                            <span class="label label-info">КПМО</span>
                         {% endif %}
                     </td>
                 </tr>
@@ -30,7 +25,7 @@
     {% if documents %}
         {% include "pagination.htm.twig" with {
             currentPage: page,
-            lastPage: documentsPagesCount,
+            lastPage: documents|length < perPage,
             router: router,
             routeName: 'documents.list'
         } %}

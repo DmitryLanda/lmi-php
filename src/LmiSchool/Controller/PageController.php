@@ -9,7 +9,7 @@ use LmiSchool\Model\Menu;
 use LmiSchool\Model\Page;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class PageController extends AbstractController
 {

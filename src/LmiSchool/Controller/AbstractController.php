@@ -11,7 +11,7 @@ use LmiSchool\Model\Menu;
 use Twig_Environment;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 abstract class AbstractController
 {

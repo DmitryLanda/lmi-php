@@ -5,7 +5,7 @@ use Exception;
 use RuntimeException;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class ModelException extends RuntimeException
 {

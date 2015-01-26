@@ -6,12 +6,12 @@
 namespace LmiSchool\Controller;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class IndexController extends AbstractController
 {
     public function indexAction()
     {
-        $this->redirectTo('news.list');
+        $this->redirectTo('news.list', ['options' => ['page' => 1]]);
     }
 }

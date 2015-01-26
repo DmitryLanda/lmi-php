@@ -21,3 +21,4 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `route_options` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8  AUTO_INCREMENT=1;
+

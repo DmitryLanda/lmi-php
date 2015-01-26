@@ -8,7 +8,7 @@ namespace LmiSchool\Model;
 use DateTime;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class News extends BaseModel
 {

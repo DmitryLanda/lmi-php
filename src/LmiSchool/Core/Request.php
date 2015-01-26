@@ -10,7 +10,7 @@ use Aura\Router\Route;
 /**
  * Class Request
  *
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class Request
 {

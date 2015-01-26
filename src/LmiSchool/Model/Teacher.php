@@ -6,7 +6,7 @@
 namespace LmiSchool\Model;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class Teacher extends BaseModel
 {

@@ -2,12 +2,11 @@
 /** @var \Aura\Router\Router|\Aura\Router\RouteCollection $router */
 
 $router->attach('documents', '/documents', function($router) {
-    $router->add('list', '/page/{page}')
+    $router->add('list', '?{options}')
         ->setValues(array(
             'controller' => 'DocumentController',
             'action' => 'listAction'
-        ))
-        ->addValues(['page' => 1]);
+        ));
 
     $router->add('show', '/{id}')
         ->setValues(array(

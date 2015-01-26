@@ -8,7 +8,7 @@ use LmiSchool\Core\Config;
 use LmiSchool\Model\Teacher;
 
 /**
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class TeacherController extends AbstractController
 {

@@ -12,7 +12,7 @@ use LmiSchool\Model\Exception\ModelException;
 /**
  * Class BaseModel
  *
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 abstract class BaseModel
 {
@@ -127,7 +127,7 @@ abstract class BaseModel
         $queryBuilder = new QueryBuilder(DatabaseConnection::getConnection());
         $queryBuilder->select(implode(',', $fieldNames))
             ->from($model->getTableName(), substr($model->getTableName(), 0, 1))
-            ->where('teacher_id = :id')
+            ->where('id = :id')
             ->setParameter('id', $id);
 
         unset($model);

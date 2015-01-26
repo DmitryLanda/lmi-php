@@ -11,7 +11,7 @@ use Doctrine\DBAL\DriverManager;
 /**
  * Class DatabaseConnection
  *
- * @author Dmitry Landa <dmitry.landa@opensoftdev.ru>
+ * @author Dmitry Landa <dmitry.landa@yandex.ru>
  */
 class DatabaseConnection
 {
