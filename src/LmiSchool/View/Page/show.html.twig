@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
+{% block keywords %}{{ page.tags|join(',') }}{% endblock %}
+{% block description %}{{ page.title }}{% endblock %}
+{% block title %}{{ page.title }}{% endblock %}
+
 {% block content %}
     {% set slugParts = page.slug|split('/') %}
     {% set slug = slugParts[0] %}

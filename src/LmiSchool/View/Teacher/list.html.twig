@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block keywords %}учителя, педагогический состав, педагог, коллектив, преподаватель{% endblock %}
+{% block description %}
+    Педагогический состав лицея Математики и Информатики.
+    Поименный список учителей с указанием их биографической информации, стажа и категории
+{% endblock %}
+{% block title %}Педагогический состав{% endblock %}
+
 {% block content %}
 <ul class="media-list">
     {% for teacher in teachers %}

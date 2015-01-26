@@ -1,5 +1,13 @@
 {% extends "base.html.twig" %}
 
+{% block keywords %}новости, видео, события, фотографии, лента, отчет, мероприятия, выставка{% endblock %}
+{% block description %}
+    Новостная лента Лицея Математики и Информатики.
+    Все важные события школьной жизни.
+    Фото и видео отчеты со школьных выставок, конкурсов и прочих мероприятий
+{% endblock %}
+{% block title %}Новостная лента{% endblock %}
+
 {% block content %}
     <ul class="media-list">
         {% for news in newsList %}

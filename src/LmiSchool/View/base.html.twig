@@ -3,10 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    {#<meta name="keywords" content="{{ keywords|default('lmi.school.meta.keywords') }}">#}
-    {#<meta name="description" content="{{ description|default('lmi.school.meta.description') }}">#}
-    <title>{% block title %}{% endblock %}</title>
-    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="keywords" content="{% block keywords %}лми, математика, информатика, лицей, школы Саратова, лучшая школа, хорошая школа{% endblock %}">
+    <meta name="description" content="{% block description %}Сайт лицея математики и информатики{% endblock %}">
+    <title>{% block title %}Лицей Математики и Информатики{% endblock %}</title>
+    <link type="text/css" rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap-theme.min.css"/>
     <link type="text/css" rel="stylesheet" href="/assets/css/sidebar.css"/>

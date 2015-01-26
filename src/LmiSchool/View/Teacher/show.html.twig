@@ -1,5 +1,11 @@
 {% extends "base.html.twig" %}
 
+{% block keywords %}учитель, педагог, преподаватель, {{ teacher.name }}, {{ teacher.subjectName }}{% endblock %}
+{% if teacher.about %}
+    {% block description %}{{ teacher.about }}{% endblock %}
+{% endif %}
+{% block title %}{{ teacher.name }}{% endblock %}
+
 {% block content %}
     {% if not teacher %}
         <div class="alert alert-warning text-center">
