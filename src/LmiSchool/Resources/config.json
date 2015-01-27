@@ -23,6 +23,9 @@
         },
         "documents": {
             "per_page": 15
+        },
+        "comments": {
+            "per_page": 15
         }
     }
 }
