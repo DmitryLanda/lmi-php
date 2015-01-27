@@ -7,7 +7,7 @@ $router->add('page.show', '/{slug}')
         'action' => 'showAction'
     ])
     ->setTokens([
-        'slug' => '(?!admin|teachers|news|error|documents)+[^/]+'
+        'slug' => '(?!admin|teachers|news|error|documents|comments)+[^/]+'
     ])
     ->setWildcard('slugs');
 

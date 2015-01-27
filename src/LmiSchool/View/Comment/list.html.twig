@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Гостевая книга{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h3>Гостевая книга</h3>
+        <a href="{{ generateUrl('comments.add') }}" class="btn btn-primary">Оставить отзыв</a>
+    </div>
+    <table class="table table-striped">
+        <tbody>
+            {% for comment in comments %}
+                <tr>
+                    <td>
+                        <ul class="list-unstyled">
+                            <li><span class="fa fa-clock-o"></span>&nbsp;{{ comment.date|date('d.m.Y H:i') }}</li>
+                            <li><span class="fa fa-user"></span>&nbsp;{{ comment.author }}</li>
+                            {% if comment.email %}
+                                <li><span class="fa fa-envelope-o"></span>&nbsp;{{ comment.email }}</li>
+                            {% endif %}
+                            {% if comment.city %}
+                                <li><span class="fa fa-globe"></span>&nbsp;{{ comment.city }}</li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                    <td class="md-content">{{ comment.message }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">
+                        <div class="alert alert-info">Записи отсутствуют.</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if commnets %}
+        {% include "pagination.htm.twig" with {
+            currentPage: page,
+            lastPage: comments|length < perPage,
+            routeName: 'comments.list'
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block javascript %}
+    <script src="/assets/js/marked.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.md-content').each(function(i, element) {
+               $(element).html(marked($(element).text()));
+            });
+        });
+    </script>
+{% endblock %}

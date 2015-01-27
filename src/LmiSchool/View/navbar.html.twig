@@ -1,7 +1,7 @@
 <nav id="top-menu" class="navbar navbar-default hidden-xs hidden-sm" role="navigation">
     <ul class="nav navbar-nav">
-        <li><a href="{{ generateUrl('news.list', {'options': {'page': 1}}) }}">Главная</a></li>
-        <li><a href="#">Гостевая книга</a></li>
+        <li><a href="{{ generateUrl('home') }}">Главная</a></li>
+        <li><a href="{{ generateUrl('comments.list', {'options': {'page': 1}}) }}">Гостевая книга</a></li>
         <li><a href="{{ generateUrl('page.show', {'slug': 'contacts'}) }}">Контакты</a></li>
         <li><a href="#">Электронная приемная</a></li>
         <li><a href="{{ generateUrl('page.show', {'slug': 'route-passport'}) }}">Дорожный паспорт</a></li>
