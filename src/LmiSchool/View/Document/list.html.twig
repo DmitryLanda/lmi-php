@@ -16,13 +16,15 @@
                 <tr>
                     <td>{{ document.name }}</td>
                     <td>
-                        <a class="pull-right" href="{{ generateUrl('documents.download', {'id': document.id}) }}">
+                        <a class="pull-right" href="{{ document.urlToDownload }}">
                             <i class="fa fa-download fa-2x"></i>
                         </a>
                     </td>
                     <td>
-                        {% if document.isKPMO() %}
+                        {% if document.type == 1 %}
                             <span class="label label-info">КПМО</span>
+                        {% elseif document.type == 2 %}
+                            <span class="label">Образование</span>
                         {% endif %}
                     </td>
                 </tr>

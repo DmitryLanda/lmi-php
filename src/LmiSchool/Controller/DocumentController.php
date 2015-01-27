@@ -36,25 +36,4 @@ class DocumentController extends AbstractController
             'page' => $page
         ]);
     }
-
-    public function showAction()
-    {
-        $this->render('Document/show.html.twig');
-    }
-
-    public function downloadAction()
-    {
-        $id = $this->request->get('id');
-        if (!$id) {
-            $this->renderNotFound();
-        }
-
-        /** @var Document $document */
-        $document = Document::find($id);
-        if (!$document) {
-            $this->renderNotFound();
-        }
-
-        var_dump($document->getUrlToView(), $document->getUrlToDownload());
-    }
 }
