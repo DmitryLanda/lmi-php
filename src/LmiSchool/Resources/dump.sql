@@ -26,10 +26,9 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp,
+  `date` datetime NOT NULL,
   `email` varchar(255),
   `city` varchar(255),
   `message` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8  AUTO_INCREMENT=1;
-

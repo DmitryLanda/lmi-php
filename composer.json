@@ -28,6 +28,8 @@
         }
     ],
     "require": {
+        "hhvm": "*",
+        "ext-gd": "*",
         "doctrine/dbal": "~2.4",
         "twitter/bootstrap": "~3.3",
         "aura/router": "~2.1",
