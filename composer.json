@@ -29,6 +29,7 @@
     ],
     "require": {
         "hhvm": "*",
+        "php": "~5.5",
         "ext-gd": "*",
         "doctrine/dbal": "~2.4",
         "twitter/bootstrap": "~3.3",

@@ -1,12 +1,12 @@
 {
-    "app_path": "/app",
+    "app_path": "/data/lmi",
     "locale": "ru_RU.UTF-8",
     "database": {
         "driver": "pdo_mysql",
-        "host": "",
-        "name": "",
-        "user": "",
-        "password": "",
+        "host": "localhost",
+        "name": "lmi",
+        "user": "root",
+        "password": "root",
         "charset": "utf8"
     },
     "routes": "src/LmiSchool/Resources/routes.php",
