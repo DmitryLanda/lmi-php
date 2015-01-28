@@ -91,6 +91,7 @@ class CommentController extends AbstractController
 
     public function getCaptchaAction()
     {
+        session_start();
         $_SESSION['lmi.comments.captcha'] = substr(sha1(uniqid('', true)), -6, 6);
 
         $img = imagecreatetruecolor(120, 35);
