@@ -9,6 +9,9 @@
         "password": "",
         "charset": "utf8"
     },
+    "yandex-disk": {
+        "token": ""
+    },
     "routes": "src/LmiSchool/Resources/routes.php",
     "template": {
         "base": "src/LmiSchool/View",

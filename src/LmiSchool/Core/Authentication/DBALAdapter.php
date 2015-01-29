@@ -63,7 +63,7 @@ class DBALAdapter extends PdoAdapter
      * @param array $bindings
      * @return array
      */
-    protected function fetchRows($query, array $bindings)
+    protected function fetchRows($query, $bindings)
     {
         unset($bindings['password']);
 

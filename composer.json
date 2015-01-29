@@ -39,7 +39,8 @@
         "codemirror/codemirror": "@dev",
         "fortawesome/font-awesome": "~4.2",
         "chjj/marked": ">=0.3.2",
-        "aura/auth": "2.0.0-beta2"
+        "aura/auth": "2.0.0-beta2",
+        "nixsolutions/yandex-php-library": "dev-master"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*"

@@ -26,6 +26,7 @@ class Application
         $app->initConfig();
         $app->initLocale();
         $app->initDatabaseConnection();
+        $app->initYandexDiskClient();
         $router = $app->initRouter();
         $twig = $app->initTemplateEngine();
         $app->initTwigFunctions($twig, $router);
@@ -136,5 +137,10 @@ class Application
             }
         );
         $twig->addFunction($generateUrlFunction);
+    }
+
+    private function initYandexDiskClient()
+    {
+        YandexDiskClient::getInstance();
     }
 }
