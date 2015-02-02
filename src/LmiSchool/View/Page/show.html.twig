@@ -27,7 +27,12 @@
     <script src="/assets/js/marked.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#md-content').html(marked($('#md-content').text()));
+            marked.setOptions({
+                gfm: false,
+                tables: false,
+                sanitize: false
+            });
+            $('#md-content').html(marked($('#md-content').html()));
         });
     </script>
 {% endblock %}
