@@ -28,8 +28,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
             marked.setOptions({
-                gfm: false,
-                tables: false,
+                gfm: true,
+                tables: true,
                 sanitize: false
             });
             $('#md-content').html(marked($('#md-content').html()));
