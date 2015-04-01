@@ -14,73 +14,76 @@
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
-<div id="header">
-    <img class="img-responsive" src="{{ '/assets/images/header.jpg' }}">
-    {% include "navbar.html.twig" %}
-</div>
-
-<div id="middle" class="container-fluid">
-    <div id="left-menu" class="col-md-3 col-sm-1 col-xs-1">
-        {% include "leftMenu.html.twig" %}
+    <div id="header">
+        <img class="img-responsive" src="{{ '/assets/images/header.jpg' }}">
+        {% include "navbar.html.twig" %}
     </div>
-    <div id="content" class="col-md-9 col-sm-11 col-xs-11">
-        <div id="messages" class="hidden"></div>
-        {% block content %}{% endblock %}
+
+    <div id="middle" class="container-fluid">
+        <div id="left-menu" class="col-md-3 col-sm-1 col-xs-1">
+            {% include "leftMenu.html.twig" %}
+        </div>
+        <div id="content" class="col-md-9 col-sm-11 col-xs-11">
+            <div id="messages" class="hidden"></div>
+            {% block content %}{% endblock %}
+        </div>
     </div>
-</div>
-<div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-{% include "footer.html.twig" %}
+    {% include "footer.html.twig" %}
 
-<script src="/assets/js/jquery-2.1.1.min.js"></script>
+    <script src="/assets/js/jquery-2.1.1.min.js"></script>
 
-<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/banner.js"></script>
 
-{% block javascript %}{% endblock %}
+    {% block javascript %}{% endblock %}
 
-<script>
-    $(document).ready(function () {
-        var nav = $('#top-menu'),
-                topMenuInitialOffset = nav.offset().top;
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > topMenuInitialOffset) {
-                nav.css({"position": "fixed", "top": 0});
-            } else {
-                nav.css({"position": "static"});
-            }
-        });
-
-        var searchVisible = false;
-        $('#search-btn')
-            .mouseover(function() {
-                if (searchVisible) {
-                    return false;
+    <script>
+        $(document).ready(function () {
+            var nav = $('#top-menu'),
+                    topMenuInitialOffset = nav.offset().top;
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > topMenuInitialOffset) {
+                    nav.css({"position": "fixed", "top": 0});
+                } else {
+                    nav.css({"position": "static"});
                 }
-                $('#search-input')
-                    .val('')
-                    .hide()
-                    .removeClass('hidden')
-                    .show('fade')
-                    .focus();
-                searchVisible = true;
-                var checkAndHide = function() {
-                    setTimeout(function () {
-                        if (!$('#search-input').val().length) {
-                            $('#search-input').hide('fade');
-                            searchVisible = false;
-                        } else {
-                            checkAndHide();
-                        }
-                    }, 10000);
-                };
-
-                checkAndHide();
             });
 
-        $('.prevent-default').click(function(e) {
-            e.preventDefault();
-        });
+            var searchVisible = false;
+            $('#search-btn')
+                .mouseover(function() {
+                    if (searchVisible) {
+                        return false;
+                    }
+                    $('#search-input')
+                        .val('')
+                        .hide()
+                        .removeClass('hidden')
+                        .show('fade')
+                        .focus();
+                    searchVisible = true;
+                    var checkAndHide = function() {
+                        setTimeout(function () {
+                            if (!$('#search-input').val().length) {
+                                $('#search-input').hide('fade');
+                                searchVisible = false;
+                            } else {
+                                checkAndHide();
+                            }
+                        }, 10000);
+                    };
+
+                    checkAndHide();
+                });
+
+            $('.prevent-default').click(function(e) {
+                e.preventDefault();
+            });
+
+            $('#banner-list').bannerRotate({offset: 6});
     });
-</script>
+    </script>
 </body>
 </html>

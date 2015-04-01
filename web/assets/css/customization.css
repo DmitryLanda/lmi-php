@@ -71,3 +71,17 @@ img.medium {
 footer div {
     padding: 20px 0;
 }
+
+#banner-list img {
+    max-height: 100px;
+    max-width: 200px;
+}
+
+#banner-list, #banner-list div {
+    padding: 0;
+}
+
+#banner-list li {
+    padding-left: 5px;
+    box-shadow: 2px 2px 5px 0;
+}
