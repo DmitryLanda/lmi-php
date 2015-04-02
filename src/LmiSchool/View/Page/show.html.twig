@@ -32,7 +32,8 @@
                 tables: true,
                 sanitize: false
             });
-            $('#md-content').html(marked($('#md-content').html()));
+            var md = $('#md-content').html().replace(/&gt;/g, '>');
+            $('#md-content').html(marked(md));
         });
     </script>
 {% endblock %}
