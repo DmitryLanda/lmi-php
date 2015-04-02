@@ -21,4 +21,3 @@ $router->add('admin.documents.remove', '/documents/{id}/remove')
         'action' => 'removeAction'
     ))
     ->setTokens(['id' => '\d+']);
-

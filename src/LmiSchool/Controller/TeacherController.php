@@ -44,4 +44,14 @@ class TeacherController extends AbstractController
 
         $this->render('Teacher/show.html.twig', ['teacher' => $teacher]);
     }
+
+    public function removeAction()
+    {
+        $id = $this->request->get('id');
+        if ($teacher = Teacher::find($id)) {
+            $teacher->remove();
+        }
+
+        $this->redirectTo('teachers.list');
+    }
 }

@@ -33,3 +33,11 @@ $router->attach('teachers', '/teachers', function($router) {
             'action' => 'editAction'
         ));
 });
+
+
+$router->add('admin.teachers.remove', '/teachers/{id}/remove')
+    ->setValues(array(
+        'controller' => 'TeacherController',
+        'action' => 'removeAction'
+    ))
+    ->setTokens(['id' => '\d+']);

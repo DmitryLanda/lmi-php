@@ -19,6 +19,13 @@
                 <a href="{{ link }}">
                     <img class="img-thumbnail thumb" src="{{ photo }}">
                 </a>
+                <div>
+                    <a href="{{ generateUrl('admin.teachers.remove', {'id': teacher.id}) }}"
+                       class="btn btn-default confirm"
+                       data-confirm="Удалить {{ teacher.name }}?">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                </div>
             </div>
             <div class="media-body">
                 <h3 class="media-heading"><a href="{{ link }}">{{ teacher.name }}</a></h3>
