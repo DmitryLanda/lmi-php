@@ -14,9 +14,11 @@ $router->attach('documents', '/documents', function($router) {
             'action' => 'showAction'
         ));
 
-    $router->add('download', '/{id}/download')
-        ->setValues(array(
-            'controller' => 'DocumentController',
-            'action' => 'downloadAction'
-        ));
 });
+$router->add('admin.documents.remove', '/documents/{id}/remove')
+    ->setValues(array(
+        'controller' => 'DocumentController',
+        'action' => 'removeAction'
+    ))
+    ->setTokens(['id' => '\d+']);
+

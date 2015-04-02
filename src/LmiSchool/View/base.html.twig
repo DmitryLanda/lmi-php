@@ -82,6 +82,10 @@
                 e.preventDefault();
             });
 
+            $('.confirm').click(function(e) {
+                return confirm($(e.currentTarget).attr('data-confirm'));
+            });
+
             $('#banner-list').bannerRotate({offset: 6});
     });
     </script>

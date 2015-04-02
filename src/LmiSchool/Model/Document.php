@@ -45,6 +45,14 @@ class Document extends BaseModel
     }
 
     /**
+     * @return string
+     */
+    public function getIdentifierName()
+    {
+        return 'id';
+    }
+
+    /**
      * @return boolean
      */
     public function isKPMO()

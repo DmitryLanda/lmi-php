@@ -26,4 +26,14 @@ class ModelException extends RuntimeException
     {
         return new self(sprintf('При обновлении данных произошла ошибка', null, $previousException));
     }
+
+    /**
+     * @param Exception $previousException
+     * @return ModelException
+     */
+    public static function failedToRemove(Exception $previousException)
+    {
+        return new self(sprintf('При удалении новой записи произошла ошибка', null, $previousException));
+    }
+
 }

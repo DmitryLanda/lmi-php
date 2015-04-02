@@ -359,6 +359,17 @@ class Teacher extends BaseModel
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getIdentifierName()
+    {
+        return 'id';
+    }
+
+    /**
+     * @return array
+     */
     protected function dump()
     {
         return [

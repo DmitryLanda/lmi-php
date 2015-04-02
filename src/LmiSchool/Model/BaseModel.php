@@ -156,10 +156,24 @@ abstract class BaseModel
         }
     }
 
+    public function remove()
+    {
+        try {
+            DatabaseConnection::getConnection()->delete($this->getTableName(), [$this->getIdentifierName() => $this->getId()]);
+        } catch (DBALException $e) {
+            throw ModelException::failedToRemove($e);
+        }
+    }
+
     /**
      * @return integer|string
      */
     public abstract function getId();
+
+    /**
+     * @return string
+     */
+    public abstract function getIdentifierName();
 
     /**
      * @return array

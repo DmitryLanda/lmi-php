@@ -153,6 +153,14 @@ class News extends BaseModel
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getIdentifierName()
+    {
+        return 'id';
+    }
+
     protected function dump()
     {
         return array(

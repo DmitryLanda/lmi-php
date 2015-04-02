@@ -6,6 +6,7 @@
 namespace LmiSchool\Core;
 
 use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\DriverManager;
 
 /**
@@ -32,7 +33,9 @@ class DatabaseConnection
         return self::$connection;
     }
 
-
+    /**
+     * @throws DBALException
+     */
     private static function connect()
     {
         $config = Config::getInstance();

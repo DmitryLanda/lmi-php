@@ -36,4 +36,14 @@ class DocumentController extends AbstractController
             'page' => $page
         ]);
     }
+
+    public function removeAction()
+    {
+        $id = $this->request->get('id');
+        if ($document = Document::find($id)) {
+            $document->remove();
+        }
+
+        $this->redirectTo('documents.list');
+    }
 }

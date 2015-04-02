@@ -50,6 +50,14 @@ class Comment extends BaseModel
     }
 
     /**
+     * @return string
+     */
+    public function getIdentifierName()
+    {
+        return 'id';
+    }
+
+    /**
      * @return array
      */
     protected function dump()

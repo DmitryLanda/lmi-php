@@ -26,7 +26,7 @@ class Application
         $app->initConfig();
         $app->initLocale();
         $app->initDatabaseConnection();
-        $app->initYandexDiskClient();
+//        $app->initYandexDiskClient();
         $router = $app->initRouter();
         $twig = $app->initTemplateEngine();
         $app->initTwigFunctions($twig, $router);

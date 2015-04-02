@@ -13,7 +13,7 @@
             {{ page.title }}
             {% if isAdmin %}
                 <small>
-                    <a href="{{ generateUrl('admin.page.edit', {'id': id}) }}" target="_blank">
+                    <a href="{{ generateUrl('admin.page.update', {'id': page.id}) }}" target="_blank">
                         <span class="pull-right fa fa-pencil"></span>
                     </a>
                 </small>

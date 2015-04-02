@@ -27,6 +27,15 @@
                             <span class="label">Образование</span>
                         {% endif %}
                     </td>
+                    {% if isAdmin %}
+                        <td>
+                            <a href="{{ generateUrl('admin.documents.remove', {'id': document.id}) }}"
+                               class="btn btn-default confirm"
+                               data-confirm="Удалить {{ document.name }}?">
+                                <span class="fa fa-trash"></span>
+                            </a>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
