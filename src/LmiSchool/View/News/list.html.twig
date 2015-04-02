@@ -34,6 +34,13 @@
                         <span class="glyphicon glyphicon-calendar"></span>
                         <span>{{ news.dateShowAfter|date('d.m.Y') }}</span>
                     </div>
+                    <div>
+                        <a href="{{ generateUrl('news.remove', {'id': news.id}) }}"
+                           class="btn btn-default confirm"
+                           data-confirm="Удалить {{ news.title }}?">
+                            <span class="fa fa-trash"></span>
+                        </a>
+                    </div>
                 </div>
                 <div class="media-body">
                     <h3 class="media-heading">{{ news.title }}</h3>

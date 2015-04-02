@@ -44,4 +44,14 @@ class NewsController extends AbstractController
 
         $this->render('News/show.html.twig', ['news' => $news]);
     }
+
+    public function removeAction()
+    {
+        $id = $this->request->get('id');
+        if ($news = News::find($id)) {
+            $news->remove();
+        }
+
+        $this->redirectTo('news.list');
+    }
 }
